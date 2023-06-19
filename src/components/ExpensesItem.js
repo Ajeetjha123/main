@@ -5,6 +5,7 @@ import ExpenseDetails from './ExpensesDetails';
 
 function ExpensesItem(props) {
   return (
+    //message
     <div className='expense-item'>
       <ExpenseDate date={props.date} />
       <ExpenseDetails
