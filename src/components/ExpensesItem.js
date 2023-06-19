@@ -1,17 +1,17 @@
+// ExpensesItem.js
 import React from 'react';
-import './ExpensesItem.css';
+import ExpenseDate from './ExpensesDate';
+import ExpenseDetails from './ExpensesDetails';
 
 function ExpensesItem(props) {
-  const { date, description, price, location } = props;
-
   return (
-    <div className="expense-item">
-      <div>{date}</div>
-      <div className="expense-item-description">
-        <h2>{description}</h2>
-        <div className="expense-item-price">{price}</div>
-      </div>
-      <div>Location: {location}</div>
+    <div className='expense-item'>
+      <ExpenseDate date={props.date} />
+      <ExpenseDetails
+        title={props.title}
+        amount={props.amount}
+        location={props.location}
+      />
     </div>
   );
 }
