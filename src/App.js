@@ -1,11 +1,11 @@
-// App.js
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ExpensesItem from './components/ExpensesItem';
 
 function App() {
   const expenses = [
     {
+      id: 1,
       date: '28th March 2021',
       description: 'Car Insurance',
       price: '$295.6',
@@ -14,19 +14,25 @@ function App() {
     // Add more expense objects here if needed
   ];
 
-  const renderedExpenses = [];
+  const [expenseList, setExpenseList] = useState(expenses);
 
-  for (let i = 0; i < 100; i++) {
-    renderedExpenses.push(
-      <ExpensesItem
-        key={i}
-        date={expenses[i % expenses.length].date}
-        description={expenses[i % expenses.length].description}
-        price={expenses[i % expenses.length].price}
-        location={expenses[i % expenses.length].location}
-      />
+  const handleDeleteExpense = (expenseId) => {
+    setExpenseList((prevExpenseList) =>
+      prevExpenseList.filter((expense) => expense.id !== expenseId)
     );
-  }
+  };
+
+  const renderedExpenses = expenseList.map((expense) => (
+    <ExpensesItem
+      key={expense.id}
+      id={expense.id}
+      date={expense.date}
+      description={expense.description}
+      price={expense.price}
+      location={expense.location}
+      onDeleteExpense={handleDeleteExpense}
+    />
+  ));
 
   return (
     <div className="App">
