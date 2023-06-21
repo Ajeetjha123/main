@@ -1,11 +1,15 @@
-// ExpensesItem.js
+
 import React from 'react';
 import ExpenseDate from './ExpensesDate';
 import ExpenseDetails from './ExpensesDetails';
 
 function ExpensesItem(props) {
+  const handleDeleteExpense = () => {
+    props.onDeleteExpense(props.id);
+  };
+
   return (
-    //message
+
     <div className='expense-item'>
       <ExpenseDate date={props.date} />
       <ExpenseDetails
@@ -13,6 +17,7 @@ function ExpensesItem(props) {
         amount={props.amount}
         location={props.location}
       />
+      <button onClick={handleDeleteExpense}>Delete</button>
     </div>
   );
 }
